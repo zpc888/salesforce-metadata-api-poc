@@ -1,0 +1,38 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.7'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.prot.sf'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation group: 'com.force.api', name: 'force-metadata-api', version: '54.0.0'
+	implementation group: 'com.force.api', name: 'force-partner-api', version: '54.0.0'
+	implementation group: 'com.force.api', name: 'force-wsc', version: '54.0.0'
+	implementation 'com.liferay:com.sforce.soap.partner:1.0.2'
+	implementation group: 'rhino', name: 'js', version: '1.7R2'
+	implementation 'org.antlr:ST4:4.3.3'
+	implementation files('libs/enterprise_stub.jar')
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
